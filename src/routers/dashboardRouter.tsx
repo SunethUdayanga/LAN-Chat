@@ -18,10 +18,13 @@ const DashboardRouter: React.FC = () => {
             group.routes.forEach((route: RouteType) => {
                 const Component = route.component;
 
+                // Remove /dashboard prefix since we're already inside the dashboard route
+                const relativePath = route.path.replace('/dashboard', '');
+
                 routeElements.push(
                     <Route
                         key={route.path}
-                        path={route.path}
+                        path={relativePath}
                         element={
                             <Suspense fallback={<LoadingSpinner />}>
                                 <Component />
@@ -39,8 +42,8 @@ const DashboardRouter: React.FC = () => {
         <Routes>
             {/* Default redirect to first route */}
             <Route
-                path="/dashboard"
-                element={<Navigate to="/dashboard/chats" replace />}
+                index
+                element={<Navigate to="chats" replace />}
             />
 
             {/* Dynamic routes from configuration */}

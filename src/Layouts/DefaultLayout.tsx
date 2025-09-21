@@ -1,9 +1,9 @@
+// src/Layouts/DefaultLayout.tsx
 import React from "react";
-import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Header from "../components/Header/Header";
 import { dashboardRoutes } from "../routers/Routes/Dashboard/dashboardRoutes";
-import DashboardRouter from "../../src/routers/dashboardRouter";
+import DashboardRouter from "../routers/dashboardRouter";
 
 const DefaultLayout: React.FC = () => {
     return (
@@ -14,7 +14,7 @@ const DefaultLayout: React.FC = () => {
             <div className="drawer-content flex flex-col">
                 <Header />
                 <main className="p-4 flex-1 bg-base-100 overflow-y-auto">
-                    {/* ✅ Sidebar links now render here */}
+                    {/* Dashboard content renders here */}
                     <DashboardRouter />
                 </main>
                 <footer className="p-4 bg-base-200 text-center">
